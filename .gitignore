@@ -1,0 +1,8 @@
+# Ignore all local archives and utility executables
+
+*.zip
+*.exe
+
+# Resources for development in progress
+
+/WIP/

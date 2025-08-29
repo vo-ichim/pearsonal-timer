@@ -1,0 +1,523 @@
+/* CSS Variables for Theming */
+:root {
+    --theme: light;
+    --bg-color: #f0f4f8;
+    --text-color: #334155;
+    --container-bg: #ffffff;
+    --header-text: #1e293b;
+    --label-text: #475569;
+    --table-border: #e2e8f0;
+    --table-header-bg: #f1f5f9;
+    --table-row-even-bg: #f8fafc;
+    --shadow-color: #0000001a;
+    --shadow-color-hover: #00000026;
+    /* Not theme dependent */
+    --disabled-bg: #9ca3af;
+    --disabled-text: #e5e7eb;
+    /* Pear element */
+    --pear-green: #68f018;
+    --pear-yellow: #e8f018;
+    --pear-red: #e87118;
+    --wood-brown: #72371C;
+    --leaf-green: #436A0D;
+}
+
+/* Dark Theme */
+/* :root[data-theme="dark"], */
+.dark-mode {
+    --bg-color: #1e293b;
+    --text-color: #cbd5e1;
+    --container-bg: #334155;
+    --header-text: #f1f5f9;
+    --label-text: #94a3b8;
+    --table-border: #475569;
+    --table-header-bg: #475569;
+    --table-row-even-bg: #3e4c5f;
+    --shadow-color: #0000004d;
+    --shadow-color-hover: #0006;
+}
+
+/* Base Body Styles */
+body {
+    font-family: "Roboto Mono", monospace, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Main Container Styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    background-color: var(--container-bg);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px var(--shadow-color), 0 4px 6px -2px var(--shadow-color);
+    text-align: center;
+    max-width: 95%;
+    width: 900px;
+    transition: background-color 0.3s;
+}
+
+/* Top Section Layout (Timer Panels) */
+.top-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+/* Responsive adjustments for top section */
+@media (min-width: 768px) {
+    .top-section {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+}
+
+/* Timer Display Styles */
+.timer-display {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--header-text);
+    letter-spacing: 0.05em;
+}
+
+/* Timer Label Styles */
+.timer-label {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--label-text);
+}
+
+
+/* Main Title Styles */
+.main-title {
+    font-size: 1.875rem;
+    /* text-3xl */
+    font-weight: 700;
+    /* font-bold */
+    margin-bottom: 1.5rem;
+    /* mb-6 */
+}
+
+/* Button Stack and Group Styling */
+.button-stack {
+    width: 100%;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    /* gap-2 */
+    margin-bottom: 0.5rem;
+    /* mb-2 */
+}
+
+.button-group button {
+    width: calc(33.3333% - 0.5rem);
+}
+
+.button-group button,
+.record-button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+/* Button hover effects */
+.button-group button:not(:disabled):hover,
+.record-button:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color-hover);
+}
+
+/* Disabled Button Styling */
+button:disabled {
+    background-color: var(--disabled-bg) !important;
+    /* Use important to override specific color classes */
+    color: var(--disabled-text) !important;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Specific Button Colors */
+.start-button {
+    background-color: #22c55e;
+    color: white;
+}
+
+.start-button:hover {
+    background-color: #16a34a;
+}
+
+.pause-button {
+    background-color: #f97316;
+    color: white;
+}
+
+.pause-button:hover {
+    background-color: #ea580c;
+}
+
+.cancel-button {
+    background-color: #ef4444;
+    color: white;
+}
+
+.cancel-button:hover {
+    background-color: #dc2626;
+}
+
+.record-button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    width: 100%;
+}
+
+.record-button:hover {
+    background-color: #2563eb;
+}
+    
+svg.fruit {
+    * {
+        transition: fill 0.8s ease-in-out;
+    }
+
+    .green-leaf {
+        fill: var(--leaf-green);
+    }
+
+    .brown-wood {
+        fill: var(--wood-brown);
+    }
+
+    .green-pear {
+        fill: var(--pear-green);
+    }
+
+    .yellow-pear {
+        fill: var(--pear-yellow);
+    }
+
+    .red-pear {
+        fill: var(--pear-red);
+    }
+}
+
+/* Input Field Styling */
+input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border: 1px solid var(--table-border);
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.reference-input {
+    margin-bottom: 0.5rem;
+    /* mb-2 */
+}
+
+/* Table Container */
+.table-container {
+    margin-top: 2rem;
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th,
+td {
+    padding: 0.75rem;
+    border: 1px solid var(--table-border);
+    text-align: left;
+}
+
+th {
+    background-color: var(--table-header-bg);
+    font-weight: 600;
+    color: var(--label-text);
+}
+
+tr:nth-child(even) {
+    background-color: var(--table-row-even-bg);
+}
+
+/* Theme Toggle Styling */
+.theme-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    background-color: var(--container-bg);
+    padding: 5px 10px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    z-index: 1000;
+}
+
+.theme-switcher span {
+    margin: 0 8px;
+    font-size: 0.8rem;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 20px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 2.5px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #3b82f6;
+}
+
+input:checked+.slider:before {
+    transform: translateX(9px);
+}
+
+/* Table Controls Styling */
+.entries-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.entries-header h2 {
+    margin: 0;
+}
+
+.entries-controls button {
+    margin-left: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+    border-radius: 0.375rem;
+    background-color: #64748b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.entries-controls button:hover {
+    background-color: #475569;
+}
+
+/* New Modal Styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: #00000080;
+    /* bg-gray-600 bg-opacity-50 */
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    position: relative;
+    padding: 1.25rem;
+    /* p-5 */
+    border-width: 1px;
+    width: 24rem;
+    /* w-96 */
+    box-shadow: 0 10px 15px -3px #0000001a, 0 4px 6px -2px #0000000d;
+    /* shadow-lg */
+    border-radius: 0.375rem;
+    /* rounded-md */
+    background-color: white;
+}
+
+.dark-mode .modal-content {
+    background-color: #1f2937;
+    /* dark:bg-gray-800 */
+    border-color: #374151;
+    /* dark:border-gray-700 */
+}
+
+.modal-body {
+    margin-top: 0.75rem;
+    /* mt-3 */
+    text-align: center;
+}
+
+.modal-title {
+    font-size: 1.125rem;
+    /* text-lg */
+    line-height: 1.75rem;
+    /* leading-6 */
+    font-weight: 500;
+    /* font-medium */
+    color: #111827;
+    /* text-gray-900 */
+}
+
+.dark-mode .modal-title {
+    color: #f9fafb;
+    /* dark:text-white */
+}
+
+.modal-message-container {
+    padding-left: 1.75rem;
+    /* px-7 */
+    padding-right: 1.75rem;
+    /* px-7 */
+    padding-top: 0.75rem;
+    /* py-3 */
+    padding-bottom: 0.75rem;
+    /* py-3 */
+}
+
+.modal-message {
+    font-size: 0.875rem;
+    /* text-sm */
+    color: #6b7280;
+    /* text-gray-500 */
+}
+
+.dark-mode .modal-message {
+    color: #d1d5db;
+    /* dark:text-gray-300 */
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 1rem;
+    /* px-4 */
+    padding-right: 1rem;
+    /* px-4 */
+    padding-top: 0.75rem;
+    /* py-3 */
+    padding-bottom: 0.75rem;
+    /* py-3 */
+}
+
+.modal-confirm-btn {
+    padding: 0.5rem 1rem;
+    /* px-4 py-2 */
+    background-color: #ef4444;
+    /* bg-red-500 */
+    color: white;
+    font-size: 1rem;
+    /* text-base */
+    font-weight: 500;
+    /* font-medium */
+    border-radius: 0.375rem;
+    /* rounded-md */
+    width: 100%;
+    box-shadow: 0 1px 2px 0 #0000000d;
+    /* shadow-sm */
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    margin-bottom: 0.5rem;
+    /* mb-2 */
+}
+
+.modal-confirm-btn:hover {
+    background-color: #dc2626;
+    /* hover:bg-red-700 */
+}
+
+.modal-cancel-btn {
+    padding: 0.5rem 1rem;
+    /* px-4 py-2 */
+    background-color: #d1d5db;
+    /* bg-gray-300 */
+    color: #1f2937;
+    /* text-gray-800 */
+    font-size: 1rem;
+    /* text-base */
+    font-weight: 500;
+    /* font-medium */
+    border-radius: 0.375rem;
+    /* rounded-md */
+    width: 100%;
+    box-shadow: 0 1px 2px 0 #0000000d;
+    /* shadow-sm */
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.modal-cancel-btn:hover {
+    background-color: #9ca3af;
+    /* hover:bg-gray-400 */
+}
+
+.hidden {
+    display: none;
+}

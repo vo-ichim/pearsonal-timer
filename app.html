@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personal Timer</title>
+        <!-- Roboto Mono font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+            rel="stylesheet">
+        <!-- Tone.js for audio feedback -->
+        <script src="https://unpkg.com/tone"></script>
+        <!--Style & favicon -->
+        <link rel="stylesheet" href="style/main.css">
+        <link rel="icon" href="images/pear.svg" type="image/svg+xml" sizes="any">
+    </head>
+
+    <body data-time-accelerator="1">
+        <!-- Custom Modal for Alerts and Confirmation -->
+        <div id="customModal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <div class="modal-body" id="modalContent">
+                    <!-- The modal title will be dynamically inserted here by JavaScript -->
+                    <div class="modal-message-container">
+                        <p class="modal-message" id="modalMessage"></p>
+                    </div>
+                    <div class="modal-buttons">
+                        <button id="modalConfirmBtn" class="modal-confirm-btn hidden">
+                            Confirm
+                        </button>
+                        <button id="modalCancelBtn" class="modal-cancel-btn">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Theme Switcher -->
+        <label class="theme-switcher">
+            <span>Light</span>
+            <div class="toggle-switch">
+                <input type="checkbox" id="themeToggle">
+                <span class="slider"></span>
+            </div>
+            <span>Dark</span>
+        </label>
+
+        <div class="container">
+            <header class="main-title">Personal Timer</header>
+            <div class="top-section">
+                <!-- Main Timer Panel -->
+                <div class="timer-controls-panel">
+                    <h2 class="timer-label">Task Time</h2>
+                    <div id="mainTimerDisplay" class="timer-display">00:00:00</div>
+                    <!-- A new button-stack container to hold both button rows -->
+                    <div class="button-stack">
+                        <div class="button-group">
+                            <button id="startButton" class="start-button">Start</button>
+                            <button id="pauseButton" class="pause-button" disabled>Pause</button>
+                            <button id="cancelButton" class="cancel-button" disabled>Cancel</button>
+                        </div>
+                        <input type="text" id="referenceText" placeholder="Enter reference text for task"
+                            class="reference-input">
+                        <!-- Record button on its own line, spanning the full width of the group above -->
+                        <button id="recordButton" class="record-button" disabled>Record Entry</button>
+                    </div>
+                </div>
+
+                <!-- Continuous Timer Panel -->
+                <div class="continuous-timer-panel">
+                    <h2 class="timer-label">Focus Time</h2>
+                    <div id="continuousTimerDisplay" class="timer-display">00:00:00</div>
+                    <svg width="256" height="256" viewBox="-30 -30 192 192" id="pear-fruit" class="fruit">
+                        <path
+                            d="M 49.953079,134.94883 C 38.172108,134.49276 27.284638,129.30054 20.927966,121.65325 12.527122,112.58632 10.281841,100.51386 14.844929,89.939971 17.79229,81.987807 23.312272,74.810842 30.075235,68.46812 c 5.174,-4.668792 7.88468,-10.456218 10.665006,-16.124484 3.712908,-8.086383 12.182152,-15.771372 23.752836,-16.686602 10.877707,-1.271664 21.380649,4.145477 25.844614,11.687942 4.348324,6.863029 7.011005,14.463084 13.539769,20.388029 7.68303,7.590935 16.26618,15.414329 18.10452,25.312109 3.32536,13.177116 -1.96581,28.225356 -16.41852,36.314276 -6.102876,3.51201 -13.674994,6.95221 -21.541665,5.84636 -4.933149,-1.45476 -9.461754,-4.91734 -15.975507,-3.6452 -6.513754,1.27214 -11.836812,4.32405 -18.093209,3.38828 z"
+                            id="flesh" class="green-pear" />
+                        <path
+                            d="M 44.612608,30.379477 C 35.17324,29.324828 26.467475,24.381718 22.758723,17.510503 21.658307,15.604387 20.693614,13.6522 19.813142,11.678908 c 4.729739,-1.118629 9.535264,-2.261192 14.501382,-2.464834 6.084452,-0.040883 12.416933,1.143472 17.119229,4.278352 2.976146,1.950083 5.582514,4.277274 7.563468,6.881052 1.029748,1.56831 1.815737,3.225042 2.535963,4.891644 -6.857205,-2.164448 -13.714408,-4.328895 -20.571613,-6.493343 5.992388,3.359306 12.558031,6.233005 17.565167,10.53135 -4.56974,0.668949 -9.246051,1.391328 -13.91413,1.076348 z"
+                            id="leaf" class="green-leaf" />
+                        <path
+                            d="m 64.316753,33.378935 c 1.227407,-5.421317 2.383996,-10.933552 5.315223,-15.990144 2.445852,-4.351079 5.339416,-8.568046 8.77521,-12.4975608 1.52402,-1.6531706 3.134574,-3.2572878 4.775947,-4.84093991 1.29698,0.87182796 2.593962,1.74365591 3.890942,2.61548391 -2.917481,3.3492129 -5.69857,6.7718036 -8.733262,10.0580718 -2.587301,2.643157 -5.147693,5.388111 -6.38011,8.612088 -1.727173,4.005589 -2.962255,8.127881 -4.074164,12.258926 -1.189929,-0.07198 -2.379857,-0.14395 -3.569786,-0.215925 z"
+                            id="stem" class="brown-wood" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Recorded Entries Table -->
+            <div class="table-container">
+                <div class="entries-header">
+                    <h2 class="entries-title">Recorded Entries</h2>
+                    <div class="entries-controls">
+                        <button id="copyButton">Copy</button>
+                        <button id="clearButton">Clear</button>
+                    </div>
+                </div>
+                <table id="entriesTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Total Task Time</th>
+                            <th>Reference</th>
+                            <th>Max Focus Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- New rows will be inserted programatically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script src="script/main.js"></script>
+    </body>
+
+</html>
