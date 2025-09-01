@@ -1,4 +1,4 @@
-# Pearfection Timer
+# Pearsonal Timer
 
 A simple web app for time task management. 
 
