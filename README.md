@@ -14,5 +14,5 @@ It features three types of timers:
 + **Automation:** The application stops and automatically records an entry when the last time threshold is reached. 
 + **Break Timer:** Mininum break time is implemented, the length being determined by which time threshold was reached during a focus session. 
 + **Entry Recording:** Users can record an entry, which includes the total task time, a reference, and the maximum focus time achieved in a session (each entry has an unique identifier). 
-+ **Reporting:** All recorded entries are displayed in a table that can be copied. 
++ **Reporting:** All recorded entries are displayed in a table that can be copied to the clipboard. 
 + **Theme:** The application supports light and dark themes.
