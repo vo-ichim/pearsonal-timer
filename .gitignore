@@ -3,6 +3,10 @@
 *.zip
 *.exe
 
+# Ignore Windows-specific folder management files
+
+desktop.ini
+
 # Resources for development in progress
 
 /WIP/
