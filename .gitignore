@@ -1,12 +1,21 @@
-# Ignore all local archives and utility executables
+# Local archives and utilities
 
 *.zip
 *.exe
+*.bat
 
 # Ignore Windows-specific folder management files
 
 desktop.ini
 
-# Resources for development in progress
+# npm files and folders (server testing)
 
-/WIP/
+package.json
+package-lock.json
+/node_modules/
+
+# Keys, secrets etc. (server testing)
+
+*.key
+*.crt
+/secret/
